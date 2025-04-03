@@ -1,0 +1,16 @@
+{
+  "TEST":"test",
+  "HOME": {
+   
+  },
+  "NAV": {
+    "APP_NAME": "App Name",
+    "LINK_LOGIN": "Login",
+    "LINK_REGISTER": "Register",
+    "LINK_LOGOUT": "Logout",
+    "NAV_LOGO": "Expense Tracker",
+    "LINK_MY_EXPENSES": "My Expenses",
+    "ADMIN": "Admin",
+    "ANALYTICS": "Analytics"
+  }
+}
