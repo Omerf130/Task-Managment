@@ -7,6 +7,7 @@ import Login from './pages/login/Login.tsx'
 import Register from './pages/register/Register.tsx'
 import Admin from './pages/admin/Admin.tsx'
 import "./assets/locales/i18n.js";
+import DashBoard from './pages/dashboard/DashBoard.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/admin" element={<Admin/>}/>
+            <Route path="/dashboard" element={<DashBoard/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

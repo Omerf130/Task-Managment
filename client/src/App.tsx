@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
-import classes from "./index.module.scss";
 import { Nav } from "./components/nav/Nav";
+import classes from "./index.module.scss";
 import {
   ThemeProvider,
   createTheme,

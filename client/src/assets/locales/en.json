@@ -12,5 +12,13 @@
     "LINK_MY_EXPENSES": "My Expenses",
     "ADMIN": "Admin",
     "ANALYTICS": "Analytics"
+  },
+  "LOGIN": {
+    "LOGIN_BTN": "Login",
+    "LOGIN_TITLE": "Login"
+  },
+  "REGISTER": {
+    "REGISTER_TITLE": "Sign Up",
+    "REGISTER_BTN": "Sign Up"
   }
 }

@@ -5,24 +5,48 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, useColorScheme } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  useColorScheme,
+} from "@mui/material";
+import { NavLink } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 
 const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
 }
+
+const NAVIGATION_ROUTES = [
+  [
+    { label: "Home", route: "/", icon: <HomeIcon /> },
+    { label: "Admin", route: "/admin", icon: <AdminPanelSettingsIcon /> },
+    { label: "DashBoard", route: "/dashboard", icon: <DashboardIcon /> },
+  ],
+  [
+    { label: "Login", route: "/login", icon: <LoginIcon /> },
+    { label: "Register", route: "/register", icon: <AppRegistrationIcon /> },
+    { label: "Logout", route: "/", icon: <LogoutIcon /> },
+  ],
+];
 
 export const Nav = (props: Props) => {
   const { window } = props;
@@ -51,26 +75,44 @@ export const Nav = (props: Props) => {
       <Toolbar />
       <Divider />
       <List>
-        {["home", "My Board", "Send Message"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+        {NAVIGATION_ROUTES[0].map((routeItem) => (
+          <ListItem key={routeItem.label} disablePadding>
+            <ListItemButton
+              component={NavLink}
+              to={routeItem.route}
+              sx={{
+                "&.active": {
+                  backgroundColor: "primary.main",
+                  color: "white",
+                },
+              }}
+            >
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {routeItem.icon}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={routeItem.label} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["Trash", "Logout"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+        {NAVIGATION_ROUTES[1].map((routeItem) => (
+          <ListItem key={routeItem.label} disablePadding>
+            <ListItemButton
+              component={NavLink}
+              to={routeItem.route}
+              sx={{
+                "&.active": {
+                  backgroundColor: "primary.main",
+                  color: "white",
+                },
+              }}
+            >
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              {routeItem.icon}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={routeItem.label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -89,6 +131,10 @@ export const Nav = (props: Props) => {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexDirection: "row",
         }}
       >
         <Toolbar>
@@ -106,21 +152,15 @@ export const Nav = (props: Props) => {
           </Typography>
         </Toolbar>
         <FormControl>
-          <FormLabel id="demo-theme-toggle">Theme</FormLabel>
           <RadioGroup
             aria-labelledby="demo-theme-toggle"
             name="theme-toggle"
             row
             value={mode}
             onChange={(event) =>
-              setMode(event.target.value as "system" | "light" | "dark")
+              setMode(event.target.value as "light" | "dark")
             }
           >
-            <FormControlLabel
-              value="system"
-              control={<Radio />}
-              label="System"
-            />
             <FormControlLabel value="light" control={<Radio />} label="Light" />
             <FormControlLabel value="dark" control={<Radio />} label="Dark" />
           </RadioGroup>
