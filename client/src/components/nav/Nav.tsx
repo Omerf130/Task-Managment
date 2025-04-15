@@ -39,7 +39,7 @@ const NAVIGATION_ROUTES = [
   [
     { label: "Home", route: "/", icon: <HomeIcon /> },
     { label: "Admin", route: "/admin", icon: <AdminPanelSettingsIcon /> },
-    { label: "DashBoard", route: "/dashboard", icon: <DashboardIcon /> },
+    { label: "Projects", route: "/dashboard", icon: <DashboardIcon /> },
   ],
   [
     { label: "Login", route: "/login", icon: <LoginIcon /> },
