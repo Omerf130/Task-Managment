@@ -6,6 +6,7 @@ import cors from "cors";
 import { mongooseConnect } from "./db/db";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import { user } from "./routes";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -24,7 +25,7 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 
 // app.use("/api/expenses", expenseRoutes);
-// app.use("/api/users", userRoutes);
+app.use("/api/users", user);
 
 app.listen(PORT, () =>
   console.log(`server is running on http://localhost:${PORT}`)
